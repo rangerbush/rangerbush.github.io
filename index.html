@@ -61,6 +61,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Two-triggers-used-to-rollback-in-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/02/Two-triggers-used-to-rollback-in-mysql/" class="article-date">
+  <time datetime="2018-03-02T10:49:54.000Z" itemprop="datePublished">2018-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/02/Two-triggers-used-to-rollback-in-mysql/">Two triggers used to rollback in mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>CREATE DEFINER=</code>John<code>@</code>%<code>TRIGGER</code>GSV_DB<code>.</code>anchorgroup_BEFORE_UPDATE<code>BEFORE UPDATE ON</code>anchorgroup<code>FOR EACH ROW
+BEGIN  &lt;/br&gt;
+if (old.Cluster&gt;=(select MaxCluster from</code>family<code>where</code>family<code>.</code>fid<code>= old.FID)) &lt;/br&gt;
+then &lt;/br&gt;
+SIGNAL SQLSTATE &#39;TX000&#39; SET MESSAGE_TEXT = &#39;Cluster is larger than or equal to MaxCluster record in family&#39;; 
+end if;&lt;/br&gt;
+END</code>   </p>
+<p><code>CREATE DEFINER=</code>John<code>@</code>%<code>TRIGGER</code>GSV_DB<code>.</code>anchorgroup_BEFORE_INSERT<code>BEFORE INSERT ON</code>anchorgroup<code>FOR EACH ROW
+BEGIN &lt;/br&gt;
+if (Cluster&gt;=(select MaxCluster from</code>family<code>where</code>family<code>.</code>fid<code>= FID))  &lt;/br&gt;
+then  &lt;/br&gt;
+SIGNAL SQLSTATE &#39;TX000&#39; SET MESSAGE_TEXT = &#39;Cluster is larger than or equal to MaxCluster record in family&#39;;  &lt;/br&gt;
+end if;  &lt;/br&gt;
+END</code>  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/02/Two-triggers-used-to-rollback-in-mysql/" data-id="cje9tjhzd00014sv9eztuhj5e" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Gitpage-Hexo-to-set-up-blog-site" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/02/Gitpage-Hexo-to-set-up-blog-site/" class="article-date">
@@ -104,7 +154,7 @@ branch: master</code> <br><br>use this if git not found<br><br><code>$ npm insta
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/02/Gitpage-Hexo-to-set-up-blog-site/" data-id="cje9t051e0001cwv9156stlrb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/02/Gitpage-Hexo-to-set-up-blog-site/" data-id="cje9tjhz800004sv9yrvkzuxa" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -149,7 +199,7 @@ branch: master</code> <br><br>use this if git not found<br><br><code>$ npm insta
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/02/hello-world/" data-id="cje9t05180000cwv9ym2trd7m" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/02/hello-world/" data-id="cje9tjhzg00024sv9issxk6oz" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -188,6 +238,10 @@ branch: master</code> <br><br>use this if git not found<br><br><code>$ npm insta
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/03/02/Two-triggers-used-to-rollback-in-mysql/">Two triggers used to rollback in mysql</a>
+          </li>
         
           <li>
             <a href="/2018/03/02/Gitpage-Hexo-to-set-up-blog-site/">Gitpage+Hexo to set up blog site</a>
