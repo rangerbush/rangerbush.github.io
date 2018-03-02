@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="1234567CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_UPDATE` BEFORE UPDATE ON `anchorgroup` FOR EACH ROWBEGINif (old.Cluster&amp;gt;=(sel">
+        <meta name="description" content="###Before UPDATE1234567CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_UPDATE` BEFORE UPDATE ON `anchorgroup` FOR EACH ROWBEGINif (old.">
     
 
     <!--Author-->
@@ -165,7 +165,8 @@
         
 
         <!-- Post Content -->
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_UPDATE` BEFORE UPDATE ON `anchorgroup` FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">if (old.Cluster&gt;=(select MaxCluster from `family` where `family`.`fid` = old.FID))</span><br><span class="line">then</span><br><span class="line">SIGNAL SQLSTATE &apos;TX000&apos; SET MESSAGE_TEXT = &apos;Cluster is larger than or equal to MaxCluster record in family&apos;;</span><br><span class="line">end if;</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+        <p>###Before UPDATE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_UPDATE` BEFORE UPDATE ON `anchorgroup` FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">if (old.Cluster&gt;=(select MaxCluster from `family` where `family`.`fid` = old.FID))</span><br><span class="line">then</span><br><span class="line">SIGNAL SQLSTATE &apos;TX000&apos; SET MESSAGE_TEXT = &apos;Cluster is larger than or equal to MaxCluster record in family&apos;;</span><br><span class="line">end if;</span><br><span class="line">END</span><br></pre></td></tr></table></figure></p>
+<p>###Before INSERT</p>
 <pre><code>CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_INSERT` BEFORE INSERT ON `anchorgroup` FOR EACH ROW
 BEGIN
 if (Cluster&gt;=(select MaxCluster from `family` where `family`.`fid` = FID))
