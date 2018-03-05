@@ -10,6 +10,9 @@
 
     <!--Description-->
     
+        <meta name="description" content="[java]static关键字的四种用法 
+在java的关键字中，static和final是两个我们必须掌握的关键字。不同于其他关键字，他们都有多种用法，而且在一定环境下使用，可以提高程序的运行性能，优化程序的结构。下面我们先来了解一下static关键字及其用法。static关键字1.修饰成员变量在">
+    
 
     <!--Author-->
     
@@ -18,7 +21,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Vault 112"/>
+        <meta property="og:title" content="4 usage of static (java)"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +32,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +43,7 @@
 
     <!-- Title -->
     
-    <title>Vault 112</title>
+    <title>4 usage of static (java) - Vault 112</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -135,17 +138,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">Vault 112</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2018/03/05/4-usage-of-static-java/">
                 4 usage of static (java)
@@ -160,9 +160,13 @@
         </div>
     </div>
 
-    
-        <div class="content">
-            <p>[java]static关键字的四种用法 </p>
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>[java]static关键字的四种用法 </p>
 <p>在java的关键字中，static和final是两个我们必须掌握的关键字。不同于其他关键字，他们都有多种用法，而且在一定环境下使用，可以提高程序的运行性能，优化程序的结构。下面我们先来了解一下static关键字及其用法。<br>static关键字<br>1.修饰成员变量<br>在我们平时的使用当中，static最常用的功能就是修饰类的属性和方法，让他们成为类的成员属性和方法，我们通常将用static修饰的成员称为类成员或者静态成员，这句话挺起来都点奇怪，其实这是相对于对象的属性和方法来说的。请看下面的例子：（未避免程序太过臃肿，暂时不管访问控制）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Person &#123;</span><br><span class="line">    String name;</span><br><span class="line">    int age;</span><br><span class="line">    </span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Name:&quot; + name + &quot;, Age:&quot; + age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Person p1 = new Person();</span><br><span class="line">        p1.name = &quot;zhangsan&quot;;</span><br><span class="line">        p1.age = 10;</span><br><span class="line">        Person p2 = new Person();</span><br><span class="line">        p2.name = &quot;lisi&quot;;</span><br><span class="line">        p2.age = 12;</span><br><span class="line">        System.out.println(p1);</span><br><span class="line">        System.out.println(p2);</span><br><span class="line">    &#125;</span><br><span class="line">    /**Output</span><br><span class="line">     * Name:zhangsan, Age:10</span><br><span class="line">     * Name:lisi, Age:12</span><br><span class="line">     *///~</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的代码我们很熟悉，根据Person构造出的每一个对象都是独立存在的，保存有自己独立的成员变量，相互不会影响，他们在内存中的示意如下:</p>
@@ -185,132 +189,20 @@
 <p>上面的代码来自于两个java文件，其中的PrintHelper很简单，包含了一个用于打印的static方法。而在App.java文件中，我们首先将PrintHelper类导入，这里在导入时，我们使用了static关键字，而且在引入类的最后还加上了“.*”，它的作用就是将PrintHelper类中的所有类方法直接导入。不同于非static导入，采用static导入包后，在不与当前类的方法名冲突的情况下，无需使用“类名.方法名”的方法去调用类方法了，直接可以采用”方法名”去调用类方法，就好像是该类自己的方法一样使用即可。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>static是java中非常重要的一个关键字，而且它的用法也很丰富，主要有四种用法：<br>用来修饰成员变量，将其变为类的成员，从而实现所有对象对于该成员的共享；<br>用来修饰成员方法，将其变为类方法，可以直接使用“类名.方法名”的方式调用，常用于工具类；<br>静态块用法，将多个类成员放在一起初始化，使得程序更加规整，其中理解对象的初始化过程非常关键；<br>静态导包用法，将类的方法直接导入到当前类中，从而直接使用“方法名”即可调用类方法，更加方便。</p>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/02/Two-triggers-used-to-rollback-in-mysql/">
-                Two triggers used to rollback in mysql
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-02</span>
-            
-            
-            
-        </div>
     </div>
 
     
-        <div class="content">
-            <p>###Before UPDATE<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_UPDATE` BEFORE UPDATE ON `anchorgroup` FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">if (old.Cluster&gt;=(select MaxCluster from `family` where `family`.`fid` = old.FID))</span><br><span class="line">then</span><br><span class="line">SIGNAL SQLSTATE &apos;TX000&apos; SET MESSAGE_TEXT = &apos;Cluster is larger than or equal to MaxCluster record in family&apos;;</span><br><span class="line">end if;</span><br><span class="line">END</span><br></pre></td></tr></table></figure></p>
-<p>###Before INSERT</p>
-<pre><code>CREATE DEFINER=`John`@`%` TRIGGER `GSV_DB`.`anchorgroup_BEFORE_INSERT` BEFORE INSERT ON `anchorgroup` FOR EACH ROW
-BEGIN
-if (Cluster&gt;=(select MaxCluster from `family` where `family`.`fid` = FID))
-then
-SIGNAL SQLSTATE &apos;TX000&apos; SET MESSAGE_TEXT = &apos;Cluster is larger than or equal to MaxCluster record in family&apos;;  &lt;/br&gt;
-end if;
-END
-</code></pre>
-        </div>
+
+    
+
+    <!-- Comments -->
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/02/Gitpage-Hexo-to-set-up-blog-site/">
-                Gitpage+Hexo to set up blog site
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-02</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="Use-Gitpage-amp-Hexo-with-Markdown-to-create-personal-blog"><a href="#Use-Gitpage-amp-Hexo-with-Markdown-to-create-personal-blog" class="headerlink" title="Use Gitpage &amp; Hexo with Markdown to create personal blog"></a>Use Gitpage &amp; Hexo with Markdown to create personal blog</h1><ol>
-<li>Setup <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git</a></li>
-<li>Setup <a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a></li>
-<li>Markdown Mannual can be found <a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">here</a></li>
-<li>Create repository <a href="https://github.com/rangerbush/rangerbush.github.io" target="_blank" rel="noopener">rangerbush.github.io</a></li>
-<li>launch git bash</li>
-<li>run<br><code>$ npm install -g hexo-cli</code></li>
-<li>check if installation is successfual <br><code>$ hexo version</code></li>
-<li></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<ol>
-<li>edit -config.yml with notepad++<br></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:   </span><br><span class="line">  type: git </span><br><span class="line">  repository: http://github.com/yourname/yourname.github.io.git  </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>  use this if git not found<br></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>Use the following command to push updates<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/03/02/hello-world/">
-                Hello World
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-03-02</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        </div>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-
 
 
 </div>
