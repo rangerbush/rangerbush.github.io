@@ -170,6 +170,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line">@ContextConfiguration(locations=&#123;&quot;file:web/WEB-INF/applicationContext.xml&quot;&#125;) //加载配置文件   </span><br><span class="line">@TransactionConfiguration(transactionManager=&quot;transactionManager&quot;,defaultRollback=true)  </span><br><span class="line">@Transactional  </span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * @author New User</span><br><span class="line"> */</span><br><span class="line">public abstract class TestFramework extends AbstractTransactionalJUnit4SpringContextTests/**/&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>I was using<br><code>@ContextConfiguration(locations={&quot;classpath:applicationContext.xml&quot;})</code><br>to load config. However, when swithed to FILES tag in Netbean I realised that there were more than one applicationContext.xml in<br>classpath(web-inf/classes or web-inf/lib) or the one in classes differs from the latest version.</p>
 <p>By deleting incorrect ones and firmly specifying file path<br><code>@ContextConfiguration(locations={&quot;file:web/WEB-INF/applicationContext.xml&quot;}) //加载配置文件</code><br>problem is sovled :)</p>
+<p>Four ways to specify a file path</p>
+<ol>
+<li>/WEB-INF/applicationContext.xml</li>
+<li>com/config/applicationContext.xml</li>
+<li>file:C:/javacode/springdemo/com/config/applicationContext.xml</li>
+<li>classpath:com/config/applicationContext.xml</li>
+</ol>
 
     </div>
 
