@@ -147,6 +147,51 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2018/06/16/JAVA中某些类似传引用的细节/">
+                JAVA中某些类似传引用的细节
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-06-16</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>正常来说，java方法参数传递的是值，也就是复制原值给方法内部，<br>例如引用一个String 或 基本类型时</p>
+<p>但是，比较有意思的是，当传递一个Collection（其他类型也可能有这个情况）时<br>    public void calls(String a,int b,List list){<br>        a = “d”;<br>        b = 9;<br>        list = new ArrayList();<br>        list.add(a);<br>    }</p>
+<pre><code>public void calls(String a,int b,List list){
+    a = &quot;d&quot;;
+    b = 9;
+    list.add(a);
+}
+
+第一个方法在方法外访问a b list时各域的值不变
+但是第二个方法中，a b 保持不变，list的size变大了，相当于传入的list变动后，变动操作对原始对象起效了。换句话说，list类似传递了原list实例的引用，方法内对list的操作直接作用在原实例上
+尝试解释如下：
+原例子中，实例ins1，对应地址为addr1，参量list中指向addr1
+方法内部直接对list操作时，list指向addr1对应实例ins1
+当使用赋值时，参量list改变了指向为新new出来的局部对象ins2，地址addr2
+再调用add操作时，list指向对象是ins2，因此ins1不受影响
+
+
+结论or这么理解即可：基本类型传值，Object类型传递参数，但是并不是如c中传递地址，而是用参量作为一个指针指向目标实例。
+    所有对参量重赋值都是将参量指针重指向另一个实例
+</code></pre>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2018/03/11/Spring线程安全/">
                 Spring线程安全
             </a>
@@ -471,6 +516,10 @@ END
         <ul>
             
             <li>
+                <a class="footer-post" href="/2018/06/16/JAVA中某些类似传引用的细节/">JAVA中某些类似传引用的细节</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2018/03/11/Spring线程安全/">Spring线程安全</a>
             </li>
             
@@ -480,10 +529,6 @@ END
             
             <li>
                 <a class="footer-post" href="/2018/03/05/4-usage-of-static-java/">4 usage of static (java)</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2018/03/02/Two-triggers-used-to-rollback-in-mysql/">Two triggers used to roll</a>
             </li>
             
         </ul>
