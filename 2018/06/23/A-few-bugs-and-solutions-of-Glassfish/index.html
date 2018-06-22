@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="When using Java 8 with Glassfish, you need to make sure glassfish version is new enough (like some nightly version of 5.0.1) to avoid a bug that disab">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="Vault 112"/>
+        <meta property="og:title" content="A_few_bugs_and_solutions_of_Glassfish"/>
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
     
 
     <!--Page Cover-->
@@ -40,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>Archiv: 2018/3 - Vault 112</title>
+    <title>A_few_bugs_and_solutions_of_Glassfish - Vault 112</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +129,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,88 +137,67 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2018/3</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2018/06/16/JAVA中某些类似传引用的细节/">
-        <span class="archive-date">
-            Jun 2018
-        </span>
-        JAVA中某些类似传引用的细节
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/06/23/A-few-bugs-and-solutions-of-Glassfish/">
+                A_few_bugs_and_solutions_of_Glassfish
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-06-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ol>
+<li><p>When using Java 8 with Glassfish, you need to make sure glassfish version is new enough (like some nightly version of 5.0.1) to avoid a bug that disables SSL related modules, for example Https and secure admin console.</p>
+</li>
+<li><p>There could be some errors saying “exec: 58: java not found”. An easy solution is to edit asenv.conf(asenv.bat in windows) in server config folder(glassfish5/glassfish/config/asenv.conf). Simply add the following:<br><code>AS_JAVA=&quot;/mnt/efs/jdk1.8.0_172&quot;</code></p>
+</li>
+<li><p>Glassfish does not support JDK9 or higher.(till 5.0.1)</p>
+</li>
+<li><p>some useful command<br><code>asadmin create-domain gsv
+asadmin delete-domain domain1
+asadmin change-admin-password
+asadmin start-domain
+asadmin enable-secure-admin
+asadmin create-service</code></p>
+</li>
+<li><p>When using Spring websocket module, there was a bug that Spring cannot get javax.websocket.server.ServerContainer from ServletContext. I cannot tell the exact reason but evidence shows that “asadmin enable-secure-admin” command messed up the domain, caused the issue. Calling “disable-secure-admin” will NOT solve the problem. You need to stop the domain, disable-secure-admin, delete-domain, and then recreate the domain. The newly created domain should have secure-admin disabled by default(not 100% sure so call disable-secure-admin first). Use the new domain and it should work fine.<br>See my post reporting this issue to GF for details:<br><a href="https://github.com/javaee/glassfish/issues/22533" target="_blank" rel="noopener">https://github.com/javaee/glassfish/issues/22533</a></p>
+</li>
+</ol>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2018/06/23/A-few-bugs-and-solutions-of-Glassfish/">
-        <span class="archive-date">
-            Jun 2018
-        </span>
-        A_few_bugs_and_solutions_of_Glassfish
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/11/Spring线程安全/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        Spring线程安全
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/05/4-usage-of-static-java/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        4 usage of static (java)
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/02/Gitpage-Hexo-to-set-up-blog-site/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        Gitpage+Hexo to set up blog site
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/10/when-having-issue-with-loading-spring-XML-files/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        when having issue with loading spring XML files
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/02/hello-world/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        Hello World
-    </a>
-</div>
-            
-                <div class="archive-post">
-    <a href="/2018/03/02/Two-triggers-used-to-rollback-in-mysql/">
-        <span class="archive-date">
-            Mar 2018
-        </span>
-        Two triggers used to rollback in mysql
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 
